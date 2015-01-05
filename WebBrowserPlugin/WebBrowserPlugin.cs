@@ -37,7 +37,8 @@ namespace WebBrowserPlugin
 
         public override void Deinitialize()
         {
-            
+            Main.Instance.m_TabController.HideTab("KerbalStuffBrowser");
+            Main.Instance.m_TabController.m_TabPages.Remove("KerbalStuffBrowser");
         }
 
         public override string GetName()
