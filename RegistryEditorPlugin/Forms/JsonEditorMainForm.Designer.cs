@@ -41,6 +41,7 @@
             this.actionStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.jsonStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.SaveChangesButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.jsonTreeViewSplitContainer)).BeginInit();
             this.jsonTreeViewSplitContainer.Panel1.SuspendLayout();
             this.jsonTreeViewSplitContainer.Panel2.SuspendLayout();
@@ -71,7 +72,7 @@
             this.jsonTreeViewSplitContainer.Panel2.Controls.Add(this.newtonsoftJsonTypeTextBox);
             this.jsonTreeViewSplitContainer.Panel2.Controls.Add(this.label1);
             this.jsonTreeViewSplitContainer.Panel2MinSize = 320;
-            this.jsonTreeViewSplitContainer.Size = new System.Drawing.Size(1008, 575);
+            this.jsonTreeViewSplitContainer.Size = new System.Drawing.Size(1008, 549);
             this.jsonTreeViewSplitContainer.SplitterDistance = 672;
             this.jsonTreeViewSplitContainer.TabIndex = 8;
             // 
@@ -84,7 +85,7 @@
             this.jsonTreeView.HideSelection = false;
             this.jsonTreeView.Location = new System.Drawing.Point(3, 3);
             this.jsonTreeView.Name = "jsonTreeView";
-            this.jsonTreeView.Size = new System.Drawing.Size(666, 569);
+            this.jsonTreeView.Size = new System.Drawing.Size(666, 543);
             this.jsonTreeView.TabIndex = 0;
             this.jsonTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.jsonTreeView_AfterSelect);
             this.jsonTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.jsonTreeView_NodeMouseClick);
@@ -109,7 +110,7 @@
             this.jsonValueTextBox.Multiline = true;
             this.jsonValueTextBox.Name = "jsonValueTextBox";
             this.jsonValueTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.jsonValueTextBox.Size = new System.Drawing.Size(323, 475);
+            this.jsonValueTextBox.Size = new System.Drawing.Size(323, 449);
             this.jsonValueTextBox.TabIndex = 6;
             this.jsonValueTextBox.Enter += new System.EventHandler(this.jsonValueTextBox_Enter);
             this.jsonValueTextBox.Leave += new System.EventHandler(this.jsonValueTextBox_Leave);
@@ -182,11 +183,22 @@
             this.jsonStatusLabel.Size = new System.Drawing.Size(62, 17);
             this.jsonStatusLabel.Text = "JsonStatus";
             // 
+            // SaveChangesButton
+            // 
+            this.SaveChangesButton.Location = new System.Drawing.Point(803, 553);
+            this.SaveChangesButton.Name = "SaveChangesButton";
+            this.SaveChangesButton.Size = new System.Drawing.Size(199, 23);
+            this.SaveChangesButton.TabIndex = 10;
+            this.SaveChangesButton.Text = "Save changes (At your own risk!)";
+            this.SaveChangesButton.UseVisualStyleBackColor = true;
+            this.SaveChangesButton.Click += new System.EventHandler(this.SaveChangesButton_Click);
+            // 
             // JsonEditorMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 601);
+            this.Controls.Add(this.SaveChangesButton);
             this.Controls.Add(this.guiStatusStrip);
             this.Controls.Add(this.jsonTreeViewSplitContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -218,6 +230,7 @@
         private System.Windows.Forms.ToolStripStatusLabel actionStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel jsonStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Button SaveChangesButton;
     }
 }
 

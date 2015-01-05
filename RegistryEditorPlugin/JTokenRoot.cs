@@ -102,5 +102,10 @@ namespace ZTn.Json.Editor
                 streamWriter.Write(jTokenValue.ToString());
             }
         }
+
+        public string GetJsonString()
+        {
+            return jTokenValue.ToString();
+        }
     }
 }

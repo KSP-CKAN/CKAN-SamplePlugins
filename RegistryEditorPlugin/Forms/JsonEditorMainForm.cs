@@ -275,5 +275,20 @@ namespace ZTn.Json.Editor.Forms
 
             jsonTreeView.EndUpdate();
         }
+
+        private void SaveChangesButton_Click(object sender, EventArgs e)
+        {
+            var json = jsonEditorItem.GetJsonString();
+
+            var settings = new JsonSerializerSettings
+            {
+                Context = new System.Runtime.Serialization.StreamingContext(
+                    System.Runtime.Serialization.StreamingContextStates.Other,
+                    CKAN.Main.Instance.CurrentInstance
+                )
+            };
+
+            CKAN.Main.Instance.CurrentInstance.RegistryManager.registry = JsonConvert.DeserializeObject<CKAN.Registry>(json, settings);
+        }
     }
 }
