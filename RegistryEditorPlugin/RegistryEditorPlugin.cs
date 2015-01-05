@@ -14,6 +14,7 @@ namespace RegistryEditorPlugin
         public static readonly string VERSION = "v1.0.0";
 
         private JsonEditorMainForm m_Form = null;
+        private ToolStripMenuItem m_MenuItem = null;
 
         public override void Initialize()
         {
@@ -24,6 +25,7 @@ namespace RegistryEditorPlugin
             menuItem.Text = "RegistryEditor";
             menuItem.Click += new System.EventHandler(menuItem_Click);
             Main.Instance.settingsToolStripMenuItem.DropDownItems.Add(menuItem);
+            m_MenuItem = menuItem;
         }
 
         public Stream GenerateStreamFromString(string s)
@@ -48,7 +50,7 @@ namespace RegistryEditorPlugin
 
         public override void Deinitialize()
         {
-            
+            Main.Instance.settingsToolStripMenuItem.DropDownItems.Remove(m_MenuItem);
         }
 
         public override string GetName()
