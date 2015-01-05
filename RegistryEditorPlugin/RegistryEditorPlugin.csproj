@@ -43,21 +43,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKAN, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ckan, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\CKAN-cmdline\bin\Debug\CKAN.dll</HintPath>
-    </Reference>
-    <Reference Include="CKAN-GUI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\CKAN-cmdline\bin\Debug\CKAN-GUI.exe</HintPath>
-    </Reference>
-    <Reference Include="CmdLine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\CKAN-cmdline\bin\Debug\CmdLine.exe</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\ckan.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
