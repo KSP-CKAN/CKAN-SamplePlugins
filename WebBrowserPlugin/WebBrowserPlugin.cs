@@ -24,11 +24,11 @@ namespace WebBrowserPlugin
             var tabPage = new TabPage();
             tabPage.Controls.Add(webBrowser);
             tabPage.Location = new System.Drawing.Point(4, 22);
-            tabPage.Name = "tabPage1";
+            tabPage.Name = "KerbalStuffBrowserTabPage";
             tabPage.Padding = new System.Windows.Forms.Padding(3);
             tabPage.Size = new System.Drawing.Size(1021, 646);
             tabPage.TabIndex = 5;
-            tabPage.Text = "KerbalStuff browser";
+            tabPage.Text = "KerbalStuff";
             tabPage.UseVisualStyleBackColor = true;
 
             Main.Instance.m_TabController.m_TabPages.Add("KerbalStuffBrowser", tabPage);
