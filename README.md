@@ -1,4 +1,3 @@
-CKAN-GUI-plugin-samples
-=======================
+# CKAN Sample Plugins
 
-Plugin sample code for the CKAN-GUI
+Sample plugins for the CKAN GUI.

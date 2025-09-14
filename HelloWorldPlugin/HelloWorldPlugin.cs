@@ -1,33 +1,24 @@
-﻿using System;
+using CKAN.Versioning;
+using CKAN.GUI;
 
 namespace HelloWorldPlugin
 {
 
-    public class HelloWorldPlugin : CKAN.IGUIPlugin
+    public class HelloWorldPlugin : IGUIPlugin
     {
-
-        private readonly string VERSION = "v1.0.1";
-
         public override void Initialize()
         {
-            CKAN.Main.Instance.m_User.RaiseError("Hello World!");
+            Main.Instance.currentUser.RaiseError("Hello World!");
         }
 
         public override void Deinitialize()
         {
-            
         }
 
-        public override string GetName()
-        {
-            return "Hello World- plugin";
-        }
+        public override string GetName() => "Hello World Plugin";
 
-        public override CKAN.Version GetVersion()
-        {
-            return new CKAN.Version(VERSION);
-        }
+        public override ModuleVersion GetVersion() => new ModuleVersion(VERSION);
 
+        private static readonly string VERSION = "v1.0.1";
     }
-
 }

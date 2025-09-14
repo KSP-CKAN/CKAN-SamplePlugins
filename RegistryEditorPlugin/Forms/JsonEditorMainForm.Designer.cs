@@ -1,4 +1,4 @@
-﻿namespace ZTn.Json.Editor.Forms
+namespace ZTn.Json.Editor.Forms
 {
     partial class JsonEditorMainForm
     {
@@ -185,6 +185,8 @@
             // 
             // SaveChangesButton
             // 
+            this.SaveChangesButton.Anchor = (System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveChangesButton.Location = new System.Drawing.Point(803, 553);
             this.SaveChangesButton.Name = "SaveChangesButton";
             this.SaveChangesButton.Size = new System.Drawing.Size(199, 23);
@@ -201,7 +203,6 @@
             this.Controls.Add(this.SaveChangesButton);
             this.Controls.Add(this.guiStatusStrip);
             this.Controls.Add(this.jsonTreeViewSplitContainer);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "JsonEditorMainForm";
             this.Text = "RegistryEditor";
             this.jsonTreeViewSplitContainer.Panel1.ResumeLayout(false);

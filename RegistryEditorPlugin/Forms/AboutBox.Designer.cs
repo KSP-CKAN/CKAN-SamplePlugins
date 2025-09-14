@@ -1,4 +1,4 @@
-﻿namespace ZTn.Json.Editor.Forms
+namespace ZTn.Json.Editor.Forms
 {
     sealed partial class AboutBox
     {

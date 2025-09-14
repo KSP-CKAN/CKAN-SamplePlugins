@@ -1,9 +1,11 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows.Forms;
-using RegistryEditorPlugin.Properties;
+
 using ZTn.Json.Editor.Extensions;
 using ZTn.Json.Editor.Generic;
+
+using RegistryEditorPlugin.Properties;
 
 namespace ZTn.Json.Editor.Forms
 {

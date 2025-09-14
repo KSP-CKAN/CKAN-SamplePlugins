@@ -1,21 +1,18 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Windows.Forms;
-using CKAN;
 using Newtonsoft.Json;
 using ZTn.Json.Editor.Forms;
+
+using CKAN;
+using CKAN.Versioning;
+using CKAN.GUI;
 
 namespace RegistryEditorPlugin
 {
 
-    public class RegistryEditorPlugin : CKAN.IGUIPlugin
+    public class RegistryEditorPlugin : IGUIPlugin
     {
-
-        public static readonly string VERSION = "v1.0.0";
-
-        private JsonEditorMainForm m_Form = null;
-        private ToolStripMenuItem m_MenuItem = null;
-
         public override void Initialize()
         {
             ToolStripMenuItem menuItem = new ToolStripMenuItem();
@@ -42,8 +39,12 @@ namespace RegistryEditorPlugin
         {
             Main.Instance.Enabled = false;
             m_Form = new JsonEditorMainForm();
-            var json = JsonConvert.SerializeObject(Main.Instance.CurrentInstance.Registry);
-            m_Form.SetJsonSourceStream(GenerateStreamFromString(json));
+            using (var regMgr = RegistryManager.Instance(Main.Instance.CurrentInstance,
+                                                         new RepositoryDataManager()))
+            {
+                var json = JsonConvert.SerializeObject(regMgr.registry);
+                m_Form.SetJsonSourceStream(GenerateStreamFromString(json));
+            }
             m_Form.ShowDialog();
             Main.Instance.Enabled = true;
         }
@@ -53,16 +54,13 @@ namespace RegistryEditorPlugin
             Main.Instance.settingsToolStripMenuItem.DropDownItems.Remove(m_MenuItem);
         }
 
-        public override string GetName()
-        {
-            return "RegistryEditor";
-        }
+        public override string GetName() => "RegistryEditor";
 
-        public override CKAN.Version GetVersion()
-        {
-            return new CKAN.Version(VERSION);
-        }
+        public override ModuleVersion GetVersion() => new ModuleVersion(VERSION);
 
+        private JsonEditorMainForm m_Form = null;
+        private ToolStripMenuItem m_MenuItem = null;
+
+        private static readonly string VERSION = "v1.0.0";
     }
-
 }

@@ -1,11 +1,15 @@
-﻿using System.Drawing;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Drawing;
 using System;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using ZTn.Json.Editor.Linq;
+
+using CKAN.GUI;
+using CKAN;
 
 namespace ZTn.Json.Editor.Forms
 {
@@ -284,11 +288,15 @@ namespace ZTn.Json.Editor.Forms
             {
                 Context = new System.Runtime.Serialization.StreamingContext(
                     System.Runtime.Serialization.StreamingContextStates.Other,
-                    CKAN.Main.Instance.CurrentInstance
+                    Main.Instance.CurrentInstance
                 )
             };
 
-            CKAN.Main.Instance.CurrentInstance.RegistryManager.registry = JsonConvert.DeserializeObject<CKAN.Registry>(json, settings);
+            using (var regMgr = RegistryManager.Instance(Main.Instance.CurrentInstance,
+                                                         new RepositoryDataManager()))
+            {
+                regMgr.registry = JsonConvert.DeserializeObject<CKAN.Registry>(json, settings);
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+
 namespace ZTn.Json.Editor.Generic
 {
     /// <summary>

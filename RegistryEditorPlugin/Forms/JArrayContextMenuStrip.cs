@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Windows.Forms;
+
+using Newtonsoft.Json.Linq;
+
 using RegistryEditorPlugin.Properties;
 
 namespace ZTn.Json.Editor.Forms

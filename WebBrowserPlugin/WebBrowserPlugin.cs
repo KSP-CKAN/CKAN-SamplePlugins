@@ -1,56 +1,66 @@
-﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
-using CKAN;
+
+using CKAN.Versioning;
+using CKAN.GUI;
 
 namespace WebBrowserPlugin
 {
-
-    public class WebBrowserPlugin : CKAN.IGUIPlugin
+    public class WebBrowserPlugin : IGUIPlugin
     {
-
-        private readonly string VERSION = "v1.0.0";
-
         public override void Initialize()
         {
-            var webBrowser = new WebBrowser();
-            webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            webBrowser.Location = new System.Drawing.Point(3, 3);
-            webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            webBrowser.Name = "webBrowser1";
-            webBrowser.Size = new System.Drawing.Size(1015, 640);
-            webBrowser.TabIndex = 0;
-            webBrowser.Url = new System.Uri("http://kerbalstuff.com", System.UriKind.Absolute);
+            Util.Invoke(Main.Instance, () =>
+            {
+                tabController = typeof(Main).GetField("tabController",
+                                                      System.Reflection.BindingFlags.NonPublic
+                                                      | System.Reflection.BindingFlags.Instance)
+                                            .GetValue(Main.Instance) as TabController;
 
-            var tabPage = new TabPage();
-            tabPage.Controls.Add(webBrowser);
-            tabPage.Location = new System.Drawing.Point(4, 22);
-            tabPage.Name = "KerbalStuffBrowserTabPage";
-            tabPage.Padding = new System.Windows.Forms.Padding(3);
-            tabPage.Size = new System.Drawing.Size(1021, 646);
-            tabPage.TabIndex = 5;
-            tabPage.Text = "KerbalStuff";
-            tabPage.UseVisualStyleBackColor = true;
+                var webBrowser = new WebBrowser()
+                {
+                    Name                   = "webBrowser1",
+                    Dock                   = DockStyle.Fill,
+                    Location               = new Point(3, 3),
+                    MinimumSize            = new Size(20, 20),
+                    Size                   = new Size(1015, 640),
+                    TabIndex               = 0,
+                    Url                    = new System.Uri("https://spacedock.info",
+                                                            System.UriKind.Absolute),
+                    ScriptErrorsSuppressed = true,
+                };
 
-            Main.Instance.m_TabController.m_TabPages.Add("KerbalStuffBrowser", tabPage);
-            Main.Instance.m_TabController.ShowTab("KerbalStuffBrowser", 1, false);
+                var tabPage = new TabPage()
+                {
+                    Name                    = "SpaceDockBrowserTabPage",
+                    Location                = new Point(4, 22),
+                    Padding                 = new Padding(3),
+                    Size                    = new Size(1021, 646),
+                    TabIndex                = 5,
+                    Text                    = "SpaceDock",
+                    UseVisualStyleBackColor = true,
+                };
+                tabPage.Controls.Add(webBrowser);
+                tabController.m_TabPages.Add("SpaceDockBrowser", tabPage);
+                tabController.ShowTab("SpaceDockBrowser", 1, false);
+            });
         }
 
         public override void Deinitialize()
         {
-            Main.Instance.m_TabController.HideTab("KerbalStuffBrowser");
-            Main.Instance.m_TabController.m_TabPages.Remove("KerbalStuffBrowser");
+            Util.Invoke(Main.Instance, () =>
+            {
+                tabController.HideTab("SpaceDockBrowser");
+                tabController.m_TabPages.Remove("SpaceDockBrowser");
+            });
         }
 
-        public override string GetName()
-        {
-            return "Web Browser";
-        }
+        public override string GetName() => "Web Browser";
 
-        public override CKAN.Version GetVersion()
-        {
-            return new CKAN.Version(VERSION);
-        }
+        public override ModuleVersion GetVersion() => new ModuleVersion(VERSION);
 
+        private TabController tabController;
+
+        private static readonly string VERSION = "v1.0.0";
     }
-
 }
