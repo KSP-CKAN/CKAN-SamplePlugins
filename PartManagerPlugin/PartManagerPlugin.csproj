@@ -13,6 +13,7 @@
     <OutDir>..</OutDir>
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
   <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
